@@ -1,0 +1,20 @@
+---
+layout: default
+title: b.zekjur.net
+---
+
+{% for post in site.posts limit: 10 %}
+  <h2>{{ post.date | date:"%Y-%m-%d" }}</h2>
+  <span class="perma"><a href="{{ post.url }}">perma</a></span>
+  {{ post.content }}
+{% endfor %}
+
+{% if site.posts.size > 10 %}
+  <hr />
+  <h1>Alte Beiträge</h1>
+  <ul>
+  {% for post in site.posts offset: 10 %}
+    <li>{{ post.date | date:"%Y-%m-%d" }} » <a href="{{ post.url }}">{{ post.title }}</a></li>
+  {% endfor %}
+  </ul>
+{% endif %}
